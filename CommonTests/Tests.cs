@@ -18,8 +18,8 @@ namespace CommonTests
 
         public void PrintWorkingAndNonWorking()
         {
-            var working = new List<CultureInfo>();
-            var notWorking = new List<CultureInfo>();
+            var working = new Dictionary<CultureInfo, string>();
+            var notWorking = new Dictionary<CultureInfo, string>();
             var cultures = CultureInfo.GetCultures(CultureTypes.SpecificCultures);
             foreach (var culture in cultures)
             {
@@ -29,11 +29,11 @@ namespace CommonTests
                 var stringRepresentation = DateTime.Now.ToString();
                 if (DateTime.TryParse(stringRepresentation, out var result))
                 {
-                    working.Add(culture);
+                    working.Add(culture, stringRepresentation);
                 }
                 else
                 {
-                    notWorking.Add(culture);
+                    notWorking.Add(culture, stringRepresentation);
 
                 }
 
@@ -43,12 +43,12 @@ namespace CommonTests
             PrintCultures("NOT WORKING!", notWorking);
         }
         
-        private void PrintCultures(string title, IEnumerable<CultureInfo> cultures)
+        private void PrintCultures(string title, Dictionary<CultureInfo, string> cultures)
         {
             Console.WriteLine(title);
             foreach (var culture in cultures)
             {
-                Console.WriteLine($"\t{culture.Name}");
+                Console.WriteLine($"\t{culture.Key}:{culture.Value}");
             }
         }
     }

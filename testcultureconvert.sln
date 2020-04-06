@@ -7,11 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonTests", "CommonTests\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleEntryPoint", "ConsoleEntryPoint\ConsoleEntryPoint.csproj", "{73A1D3A9-02E2-4135-9E16-CBA0638EAF8C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7881F60F-C534-4C24-8640-14517ED09ACA}"
-	ProjectSection(SolutionItems) = preProject
-		..\global.json = ..\global.json
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitEntryPoint", "NUnitEntryPoint\NUnitEntryPoint.csproj", "{F6CBEE13-E47D-4826-85C7-FB2169423EC2}"
 EndProject
 Global

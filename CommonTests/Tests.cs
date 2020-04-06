@@ -46,6 +46,7 @@ namespace CommonTests
             try
             {
                 DateTime.Parse(stringRepresentation, cultureInfo);
+                _output.WriteLine("WORKED!");
                 return true;
             }
             catch (Exception e)

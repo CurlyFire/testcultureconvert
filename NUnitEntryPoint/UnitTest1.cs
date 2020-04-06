@@ -1,10 +1,12 @@
-﻿using CommonTests;
+using CommonTests;
+using NUnit.Framework;
 
-namespace ConsoleEntryPoint
+namespace NUnitEntryPoint
 {
-    class Program
+    public class UnitTest1
     {
-        static void Main(string[] args)
+        [Test]
+        public void Test1()
         {
             var tests = new Tests();
             tests.ConvertDatetimeFromStringAndBackAgain("fr-CA");

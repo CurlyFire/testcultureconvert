@@ -6,9 +6,9 @@ namespace CommonTests
 {
     public class Tests
     {
-        public void ConvertDatetimeFromStringAndBackAgain()
+        public void ConvertDatetimeFromStringAndBackAgain(string cultureName)
         {
-            var cultureInfo = CultureInfo.GetCultureInfo("fr-CA");
+            var cultureInfo = CultureInfo.GetCultureInfo(cultureName);
             CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
             CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 

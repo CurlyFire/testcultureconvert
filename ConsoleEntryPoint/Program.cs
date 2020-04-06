@@ -1,4 +1,5 @@
-﻿using CommonTests;
+﻿using System;
+using CommonTests;
 
 namespace ConsoleEntryPoint
 {
@@ -6,8 +7,9 @@ namespace ConsoleEntryPoint
     {
         static void Main(string[] args)
         {
-            var tests = new Tests();
-            tests.TryDifferentConvertMethods();
+            var tests = new Tests(Console.Out);
+            tests.TryConvertDatetimeFromStringAndBackAgainUsingArgument();
+            tests.TryConvertDatetimeFromStringAndBackAgainUsingDefaultThreadCulture();
         }
     }
 }

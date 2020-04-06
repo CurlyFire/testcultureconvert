@@ -6,10 +6,16 @@ namespace NUnitEntryPoint
     public class UnitTest1
     {
         [Test]
-        public void Test1()
+        public void TryConvertDatetimeFromStringAndBackAgainUsingArgument()
         {
-            var tests = new Tests();
-            tests.TryDifferentConvertMethods();
+            var tests = new Tests(TestContext.Out);
+            Assert.IsTrue(tests.TryConvertDatetimeFromStringAndBackAgainUsingArgument());
+        }
+        [Test]
+        public void TryConvertDatetimeFromStringAndBackAgainUsingDefaultThreadCulture()
+        {
+            var tests = new Tests(TestContext.Out);
+            Assert.IsTrue(tests.TryConvertDatetimeFromStringAndBackAgainUsingDefaultThreadCulture());
         }
     }
 }

@@ -1,55 +1,58 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 
 namespace CommonTests
 {
     public class Tests
     {
         private const string CULTURE_NAME = "fr-CA";
-        public void TryDifferentConvertMethods()
+
+        private readonly TextWriter _output;
+
+        public Tests(TextWriter output)
         {
-
-            try
-            {
-                ConvertDatetimeFromStringAndBackAgainUsingDefaultThreadCulture();
-                Console.WriteLine("WORKED!");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"FAILED: {e.Message}");
-            }
-
-            try
-            {
-                ConvertDatetimeFromStringAndBackAgainUsingArgument();
-                Console.WriteLine("WORKED!");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"FAILED!: {e.Message}");
-            }
-
+            _output = output;
         }
 
-        private void ConvertDatetimeFromStringAndBackAgainUsingDefaultThreadCulture()
+        public bool TryConvertDatetimeFromStringAndBackAgainUsingDefaultThreadCulture()
         {
             var cultureInfo = CultureInfo.GetCultureInfo(CULTURE_NAME);
             CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
             CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 
             var stringRepresentation = DateTime.Now.ToString();
-            Console.WriteLine($"Trying to convert {stringRepresentation} using CultureInfo.DefaultThreadCurrentCulture and CultureInfo.DefaultThreadCurrentUICulture...");
-            var date = DateTime.Parse(stringRepresentation);
+            _output.WriteLine($"Trying to convert {stringRepresentation} using CultureInfo.DefaultThreadCurrentCulture and CultureInfo.DefaultThreadCurrentUICulture...");
+            try
+            {
+                DateTime.Parse(stringRepresentation);
+                _output.WriteLine("WORKED!");
+                return true;
+            }
+            catch (Exception e)
+            {
+                _output.WriteLine($"FAILED: {e.Message}");
+                return false;
+            }
         }
 
-        private void ConvertDatetimeFromStringAndBackAgainUsingArgument()
+        public bool TryConvertDatetimeFromStringAndBackAgainUsingArgument()
         {
             var cultureInfo = CultureInfo.GetCultureInfo(CULTURE_NAME);
 
             var stringRepresentation = DateTime.Now.ToString(cultureInfo);
-            Console.WriteLine($"Trying to convert {stringRepresentation} using cultureInfo as an argument to ToString and Parse...");
-            var date = DateTime.Parse(stringRepresentation, cultureInfo);
+            _output.WriteLine($"Trying to convert {stringRepresentation} using cultureInfo as an argument to ToString and Parse...");
+            try
+            {
+                DateTime.Parse(stringRepresentation, cultureInfo);
+                return true;
+            }
+            catch (Exception e)
+            {
+                _output.WriteLine($"FAILED: {e.Message}");
+                return false;
+            }
         }
         
         private void PrintCultures(string title, Dictionary<CultureInfo, string> cultures)

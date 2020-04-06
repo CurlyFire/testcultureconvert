@@ -9,7 +9,7 @@ namespace NUnitEntryPoint
         public void Test1()
         {
             var tests = new Tests();
-            tests.ConvertDatetimeFromStringAndBackAgain("fr-CA");
+            tests.TryDifferentConvertMethods();
         }
     }
 }

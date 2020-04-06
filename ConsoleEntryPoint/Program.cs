@@ -7,7 +7,7 @@ namespace ConsoleEntryPoint
         static void Main(string[] args)
         {
             var tests = new Tests();
-            tests.ConvertDatetimeFromStringAndBackAgain("fr-CA");
+            tests.TryDifferentConvertMethods();
         }
     }
 }
